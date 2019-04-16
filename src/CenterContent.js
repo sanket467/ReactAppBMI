@@ -6,7 +6,8 @@ class CenterContent extends React.Component {
         super(props)
         this.state = {
             wt: 0,
-            ht: 0
+            ht: 0,
+            bmi:0
         }
         this.wtUpdate = this.wtUpdate.bind(this);
     }
@@ -30,6 +31,14 @@ class CenterContent extends React.Component {
         console.log("clicked");
         console.log(this.state.ht);
         console.log(this.state.wt);
+
+        this.setState(
+            {
+                bmi : this.state.wt /(this.state.ht * this.state.ht)
+            }
+        );
+
+        console.log(this.state.bmi);
     }
 
     render() {
