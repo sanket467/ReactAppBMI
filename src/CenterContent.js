@@ -7,7 +7,9 @@ class CenterContent extends React.Component {
         this.state = {
             wt: 0,
             ht: 0,
-            bmi:0
+            bmi: 0,
+            showDiv: 0
+
         }
         this.wtUpdate = this.wtUpdate.bind(this);
     }
@@ -20,9 +22,20 @@ class CenterContent extends React.Component {
         );
     }
 
+    showBMI = () =>{
+        // if(this.state.showDiv===1){
+            return(
+                <div>
+                    <p> The BMI is : {this.state.bmi} </p>
+                </div>
+
+            );
+        // }
+    }
+
     htUpdate = (event) => {
         this.setState({
-            ht : event.target.value
+            ht: event.target.value
         }
         );
     }
@@ -34,11 +47,13 @@ class CenterContent extends React.Component {
 
         this.setState(
             {
-                bmi : this.state.wt /(this.state.ht * this.state.ht)
+                bmi: this.state.wt / (this.state.ht * this.state.ht),
+                showDiv: 1
             }
         );
 
         console.log(this.state.bmi);
+        console.log(this.state.showDiv);
     }
 
     render() {
@@ -61,6 +76,18 @@ class CenterContent extends React.Component {
                     </div>
                     <div className="col">
                         <button type="button" class="btn btn-primary" onClick={this.clickedBMI}>Calculate BMI</button>
+
+                    </div>
+                    <div className="col">
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                    </div>
+                    <div className="col">
+
+                        {this.showBMI}
+                        <p> showBMI </p>
 
                     </div>
                     <div className="col">
